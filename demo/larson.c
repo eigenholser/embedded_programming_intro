@@ -8,10 +8,10 @@ int larsonFlag = 0;
 int larsonFreq = LARSON_FREQ;
 
 void Larson_Init(void) {
-	SYSCTL->RCGCGPIO |= (1U << 1);	/* enable run mode for GPIOB */
-	SYSCTL->GPIOHBCTL |= (1U << 1); /* enable AHB for GPIOB */
-	GPIOB_AHB->DIR |= 0xFFU;		/* All GPIOB pins output */
-	GPIOB_AHB->DEN |= 0xFFU;		/* All GPIOB pins digital */
+	SYSCTL->RCGCGPIO |= (1U << 1);	// Enable run mode for GPIOB
+	SYSCTL->GPIOHBCTL |= (1U << 1); // Enable AHB for GPIOB
+	GPIOB_AHB->DIR |= 0xFFU;		// All GPIOB pins output
+	GPIOB_AHB->DEN |= 0xFFU;		// All GPIOB pins digital
 }
 
 void shiftLEDBits(void) {
