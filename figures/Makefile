@@ -8,7 +8,7 @@ alllist= for x in $(wildcard *.tex); do \
 		 done
 realcleanlist= for x in $(wildcard *.dvi) $(wildcard *.aux) \
 		           $(wildcard *.log) $(wildcard *ps) \
-				   $(wildcard *.pdf); do \
+				   $(wildcard *.pdf) $(wildcard *.png); do \
 				  ${ECHO} $$x; \
 		       done
 cleanlist= for x in $(wildcard *.dvi) $(wildcard *.aux) \
@@ -21,7 +21,7 @@ tidylist= for x in $(wildcard *.dvi) $(wildcard *.aux) \
 		  done
 
 %.dvi : %.tex
-	@latex $< #> /dev/null 2>&1
+	@latex $< > /dev/null 2>&1
 
 %.ps : %.dvi
 	@dvips $< > /dev/null 2>&1
@@ -29,7 +29,10 @@ tidylist= for x in $(wildcard *.dvi) $(wildcard *.aux) \
 %.pdf : %.ps
 	@ps2pdf $< > /dev/null 2>&1
 
-TYPES=dvi ps pdf
+%.png : %.pdf
+	convert -density 400 -background white -alpha remove $< $@ > /dev/null 2>&1
+
+TYPES=dvi ps pdf png
 all :
 	@for item in `${alllist}`; \
 	do  \
