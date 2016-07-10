@@ -14,14 +14,14 @@ int sw_norm_count = 0;
 
 __attribute__((naked)) void assert_failed(char const *file, int line) {
     /* TBD: damage control */
-    NVIC_SystemReset(); 	/* reset the system */
+    NVIC_SystemReset(); 	// Reset the system
 }
 
 void GPIOPortA_IRQHandler(void) {
-	GPIOA_AHB->ICR |= PA3;				/* Clear PA3 interrupt */
+	GPIOA_AHB->ICR |= PA3;				// Clear PA3 interrupt
 
 	/* Debounce switch on PA3 */
-	GPIO_PA3_Interrupt_Disable();		/* Switch will bounce. Disable interrupt */
+	GPIO_PA3_Interrupt_Disable();		// Switch will bounce. Disable interrupt
 
 	pa3flag = 1;
 }
@@ -41,39 +41,40 @@ void SysTick_Handler(void) {
 	if (sw_norm_count > LARSON_FREQ * 4) {
 		sw_norm_count = 0;
 
-		// Decrement switch counter by 1 until 0 for each full cycle.
+		/* Decrement switch counter by 1 until 0 for each full cycle. */
 		if (sw_count > 0)
 			sw_count--;
 
+		/* Console noise reduction rule--print only if not equal to LARSON_FREQ */
 		if (larsonFreq != LARSON_FREQ)
-			iprintf("larsonFreq = %i\n", larsonFreq);
+			iprintf("Larson scanning frequency is %i\n", larsonFreq);
 	}
 
 	if (pa3flag == 1) {
 		counter++;
-		// Check for PA3 logic level
+		/* Check for PA3 logic level */
 		if ((GPIOA_AHB->GPIO_Bits[PA3] == PA3) & (counter > 1)) {
 			counter = 0;
-			sw_count++;								/* count the switch */
+			sw_count++;								// Count the switch
 
-			// Switch is on.
-			GPIOA_AHB->GPIO_Bits[PA2] = PA2;		/* Turn lamp on, set PA2 HIGH */
+			/* Switch is on. */
+			GPIOA_AHB->GPIO_Bits[PA2] = PA2;		// Turn lamp on, set PA2 HIGH
 			printf("Lamp ON\n");
 
-			GPIO_PA3_Interrupt_Enable();			/* Turn interrupt back on */
+			GPIO_PA3_Interrupt_Enable();			// Turn interrupt back on
 
-			GPIOF_AHB->GPIO_Bits[LED_BLUE] = LED_BLUE;	/* Indicate lamp on */
+			GPIOF_AHB->GPIO_Bits[LED_BLUE] = LED_BLUE;	// Indicate lamp on
 		}
 
 		if ((GPIOA_AHB->GPIO_Bits[PA3] == 0) & (counter > 1)){
-			// Switch is off.
-			GPIOA_AHB->GPIO_Bits[PA2] = 0;			/* Turn lamp off, set PA2 LOW */
+			/* Switch is off. */
+			GPIOA_AHB->GPIO_Bits[PA2] = 0;			// Turn lamp off, set PA2 LOW
 			printf("Lamp OFF\n");
 			counter = 0;
-			sw_count++;								/* count the switch */
-			GPIO_PA3_Interrupt_Enable();			/* Turn interrupt back on */
+			sw_count++;								// Count the switch
+			GPIO_PA3_Interrupt_Enable();			// Turn interrupt back on
 
-			GPIOF_AHB->GPIO_Bits[LED_BLUE] = 0;		/* Indicate lamp off */
+			GPIOF_AHB->GPIO_Bits[LED_BLUE] = 0;		// Indicate lamp off
 		}
 	}
 }
