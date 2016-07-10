@@ -40,5 +40,13 @@ demo/.settings/
 demo/.ccsproject
 demo/.cproject
 demo/.project
+
+# Figures
+*.pdf
 *.png
+*.aux
+*.log
+*.dvi
+*.ps
+*.swp
 
