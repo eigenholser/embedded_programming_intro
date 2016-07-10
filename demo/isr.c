@@ -32,7 +32,7 @@ void SysTick_Handler(void) {
 		systick_counter = 0;
 		shiftLEDBits();
 		int larsonWin = (larsonValue & 0x1FEU) >> 1;
-		GPIO_PORTB_AHB_DATA_R = larsonWin;
+		GPIOB_AHB->DATA = larsonWin;
 
 		larsonFreq = LARSON_FREQ > sw_count ? LARSON_FREQ - sw_count : 1;
 	}
