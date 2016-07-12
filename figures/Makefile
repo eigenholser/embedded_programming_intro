@@ -61,7 +61,7 @@ clean:
 	done
 
 tidy:
-	for item in `${tidylist}`; do\
+	@for item in `${tidylist}`; do\
 		${ECHO} "Removing $$item"; \
 		$(RM) $$item; \
 	done;
