@@ -45,23 +45,161 @@
 
         <section data-background-image="images/blackboard.jpg">
           <h1>TM4C</h1>
-          <!-- TODO: Add TM4C graphic here. -->
           <img src="images/tm4c.jpg" height="500"/>
+          <aside class="notes">
+            <ul>
+              <li>See the demo here.</li>
+            </ul>
+          </aside>
         </section>
 
+        <!--
+          Vector table simply must come first! Conversation about the stack
+          cannot take place without the vector table context.
+        -->
+        <section>
+          <section data-background-image="images/blackboard.jpg">
+            <h1>Vector Table</h1>
+            <aside class="notes">
+              <ul>
+                <li>Exceptions and Interrupts - TM4C123GH6PM Microcontroller Data Sheet, Page 102</li>
+                <li>Vector Table - TM4C123GH6PM Microcontroller Data Sheet, Page 106</li>
+                <li>Highlight Stack Pointer, Reset Vector, SysTick Vector, and GPIOA Vector - TM4C123GH6PM Microcontroller Data Sheet, Page 103</li>
+              </ul>
+            </aside>
+          </section>
+
+          <section data-background-image="images/blackboard.jpg">
+            <h1>Nested Vector Interrupt Controller</h1>
+            <aside class="notes">
+              <ul>
+                <li></li>
+              </ul>
+            </aside>
+          </section>
+
+          <section data-background-image="images/blackboard.jpg">
+            <h1>SysTick</h1>
+            <aside class="notes">
+              <ul>
+                <li>TODO: Describe how to configure the SysTick.</li>
+                <li>TODO: Describe how it is used for multiple purposes in this demo.</li>
+              </ul>
+            </aside>
+          </section>
+
+        </section>
+
+        <!--
+          Stack.
+        -->
         <section data-background-image="images/blackboard.jpg">
-          <h3>Pull Down Resistor</h3>
-          <img src="../figures/pdr.png" width="600"/>
+          <h2>Stack</h2>
+          <img src="../figures/stack_traditional.png" width="300"/>
+          <img src="../figures/stack_safer.png" width="300"/>
+          <aside class="notes">
+            <ul>
+              <li>Stack Pointer - TM4C123GH6PM Microcontroller Data Sheet, Page 102</li>
+              <li>Linker and stack location - linker.lds</li>
+              <li>Toyota unintended acceleration problem - stack overflow.</li>
+              <li>AAPCS - Arm Architecture Procedure Call Standard, See AAPCS document</li>
+              <li>HardFault exception handler on stack overflow</li>
+              <li>GCC attribute "naked" to not use stack operations.
+            </ul>
+          </aside>
         </section>
 
+        <!--
+          Interrupts on GPIO digital inputs.
+
+          TODO: Describe interrupt configuration.
+        -->
         <section data-background-image="images/blackboard.jpg">
           <section data-background-image="images/blackboard.jpg">
-            <h1>Bonus topic: switch debouncing</h1>
+            <h1>GPIO Digital Input with Interrupt</h1>
+            <aside class="notes">
+              <ul>
+                <li></li>
+              </ul>
+            </aside>
+          </section>
+
+          <section data-background-image="images/blackboard.jpg">
+            <h3>Pull Down Resistor</h3>
+            <img src="../figures/pdr.png" width="600"/>
+            <aside class="notes">
+              <ul>
+                <li>TODO: Data sheet</li>
+              </ul>
+            </aside>
+          </section>
+
+          <section data-background-image="images/blackboard.jpg">
+            <h3>Wall Switch</h3>
+            <img src="../figures/switch.png" width="800"/>
+          </section>
+        </section>
+
+        <!--
+          GPIO digital output.
+        -->
+        <section>
+          <section data-background-image="images/blackboard.jpg">
+            <h1>GPIO Digital Output</h1>
+            <aside class="notes">
+              <ul>
+                <li>It's all the same. logic HIGH or logic LOW on whatever pin you choose. It only matters what the pin is connected to.</li>
+              </ul>
+            </aside>
+          </section>
+
+          <section data-background-image="images/blackboard.jpg">
+            <h2>Solid State Relay</h2>
+            <img src="../figures/ssr.png" width="500"/>
+            <aside class="notes">
+              <ul>
+                <li>Solid state relay from JameCo - 40 Amps, 240 Volts. Control signal 3-32 Volts, 15mA.</li>
+              </ul>
+            </aside>
+          </section>
+
+          <section data-background-image="images/blackboard.jpg">
+            <h2>Larson Scanner</h2>
+            <img src="../figures/bus.png" width="600"/>
+            <aside class="notes">
+              <ul>
+                <li>Bitwise shift a 10-bit number on a schedule. After each shift, display bits 2:9.</li>
+              </ul>
+            </aside>
+          </section>
+        </section>
+
+        <!--
+          Switch debouncing.
+        -->
+        <section data-background-image="images/blackboard.jpg">
+          <section data-background-image="images/blackboard.jpg">
+            <h1>Switch Debouncing</h1>
+            <!--
+            <aside class="notes">
+              <ul>
+                <li></li>
+              </ul>
+            </aside>
+            -->
           </section>
 
           <section data-background-image="images/blackboard.jpg">
             <h3>Dramatization of switch bouncing versus CPU clock.</h3>
             <img src="../figures/bounce.png" width="600"/>
+            <aside class="notes">
+              <ul>
+                <li>The switch bounce is random and on the order of single-digit milliseconds. I can only guess.</li>
+                <li>The CPU clock is very much faster than represented.</li>
+                <li>Originally I tried doing a bit toggle thinking that ultimately the number of bounces would be an odd number and thus leave GPIO PA2 HIGH.</li>
+                <li>That proved to be unreliable. And, I also thought it sloppy.</li>
+              </ul>
+            </aside>
           </section>
 
           <section data-background-image="images/blackboard.jpg">
@@ -72,7 +210,21 @@
           <section data-background-image="images/blackboard.jpg">
             <h3>CPU clock cycles per millisecond</h3>
             <img src="../figures/count.png"/>
+            <aside class="notes">
+              <ul>
+                <li>Quickly review the code.</li>
+                <li>Disable GPIOA interrupts. Set the flag. Wait for two cycles of logic HIGH.</li>
+                <li>Then we conclude that the switch is on. Re-enable GPIOA interrupts.</li>
+              </ul>
+            </aside>
           </section>
+        </section>
+
+        <!-- TODO: SysTick slides -->
+
+        <section data-background-image="images/blackboard.jpg">
+          <h1>Questions</h1>
+          <p>https://github.com/eigenholser/embedded_programming_intro</p>
         </section>
 
       </div>
@@ -85,6 +237,11 @@
       // More info https://github.com/hakimel/reveal.js#configuration
       Reveal.initialize({
         history: true,
+
+        showNotes: true,
+
+        transition: 'fade',
+        backgroundTransition: 'none',
 
         // More info https://github.com/hakimel/reveal.js#dependencies
         dependencies: [
