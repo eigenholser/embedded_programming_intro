@@ -1,0 +1,25 @@
+%
+% Pull Down Resistor
+%
+\documentclass[border=3mm]{standalone}
+\usepackage{tikz}
+\usetikzlibrary{circuits.ee.IEC}
+
+\begin{document}
+
+\begin{tikzpicture}[circuit ee IEC,large circuit symbols,
+                    pin/.style={circle,draw=black!100,fill=white!20,thin, inner sep=0pt,minimum size=4mm}]
+    \begin{scope}[set resistor graphic=var resistor IEC graphic,
+                  set diode graphic=var diode IEC graphic,font=\small]
+        \node (output) at (2,0) [pin] {};
+        \node [font=\footnotesize,above] at (output.north) {GPIOA Pin 2};
+        \node [font=\footnotesize,below] at (output.south) {Digital Output};
+        \draw [-] (0,0) to (output);
+        \draw [-] (output) to (2.5,0) to [make contact] (5,0)
+                           to [resistor,point down] (4,5)
+                           to (5,-4) node [ground,point down] {} (5,-4);
+    \end{scope}
+\end{tikzpicture}
+
+\end{document}
+

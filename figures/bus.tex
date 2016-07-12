@@ -1,0 +1,22 @@
+\documentclass[border=3mm]{standalone}
+\usepackage{tikz}
+\usetikzlibrary{circuits.ee.IEC}
+
+\begin{document}
+\begin{tikzpicture}[circuit ee IEC,small circuit symbols,
+    pin/.style={circle,draw=black!100,fill=white!20,thin, inner sep=0pt,minimum size=4mm}]
+    \begin{scope}[set resistor graphic=var resistor IEC graphic,
+                  set diode graphic=var diode IEC graphic]
+        \node [font=\footnotesize] (bussym) at (1.5,0) {/};
+        \node [font=\footnotesize,above] at (bussym.north) {8};
+        \node (output) at (0,0) [pin] {};¬
+        \node [font=\footnotesize,above] at (output.north) {GPIOB Pins};
+        \node [font=\footnotesize,below] at (output.south) {Digital Output};
+        \draw (output) to (1.5,0) to [diode={light emitting}] (5,0)
+                       to [resistor={ohm=330},point down] (3,5)
+                       to (5,-3) node [ground,point down] {} (5,-3);
+    \end{scope}
+\end{tikzpicture}
+
+\end{document}
+
