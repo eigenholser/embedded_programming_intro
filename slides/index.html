@@ -31,16 +31,28 @@
           <h1 style="text-align: left;">Systems</h1>
           <h1 style="text-align: left;">Programming</h1>
         </section>
+
         <section data-background-image="images/blackboard.jpg">
           <h1>Scott Overholser</h1>
-          <!-- TODO: Add current gig here. -->
+          <p>https://github.com/eigenholser/embedded_programming_intro</p>
+          <aside class="notes">
+            <ul>
+              <li>Java/Scala dev at t0, blockchain securities. </li>
+              <li>Follow along if you like. Github link at end of talk too.</li>
+            </ul>
+          </aside>
         </section>
 
         <section data-background-image="images/blackboard.jpg">
           <h1>Vector Table</h1>
-          <h1>Interrupts</h1>
           <h1>Stack</h1>
+          <h1>Interrupts</h1>
           <h1>GPIO</h1>
+          <aside class="notes">
+            <ul>
+              <li>These topics are all interwoven. Though I will try to focus, we will unavoidably bounce around.</li>
+            </ul>
+          </aside>
         </section>
 
         <section data-background-image="images/blackboard.jpg">
@@ -48,7 +60,13 @@
           <img src="images/tm4c.jpg" height="500"/>
           <aside class="notes">
             <ul>
+              <li>Introduct TM4C, embedded system, peripherals.</li>
               <li>See the demo here.</li>
+              <li>Don't forget the UART!</li>
+              <li>Introduce TM4C data sheet, user's manual, AAPCS document.</li>
+              <li>TI Code Composer Studio, GCC ARM. No limit.</li>
+              <li>IAR Systems Embedded Workbench or Keil uVision. Free license for size limited or time limited.</li>
+              <li>Code written for GCC, TM4C.</li>
             </ul>
           </aside>
         </section>
@@ -57,53 +75,23 @@
           Vector table simply must come first! Conversation about the stack
           cannot take place without the vector table context.
         -->
-        <section>
-          <section data-background-image="images/blackboard.jpg">
-            <h1>Vector Table</h1>
-            <aside class="notes">
-              <ul>
-                <li>Exceptions and Interrupts - TM4C123GH6PM Microcontroller Data Sheet, Page 102</li>
-                <li>Vector Table - TM4C123GH6PM Microcontroller Data Sheet, Page 106</li>
-                <li>Highlight Stack Pointer, Reset Vector, SysTick Vector, and GPIOA Vector - TM4C123GH6PM Microcontroller Data Sheet, Page 103</li>
-              </ul>
-            </aside>
-          </section>
-
-          <section data-background-image="images/blackboard.jpg">
-            <h1>Nested Vector Interrupt Controller</h1>
-            <aside class="notes">
-              <ul>
-                <li></li>
-              </ul>
-            </aside>
-          </section>
-
-          <section data-background-image="images/blackboard.jpg">
-            <h1>SysTick</h1>
-            <aside class="notes">
-              <ul>
-                <li>TODO: Describe how to configure the SysTick.</li>
-                <li>TODO: Describe how it is used for multiple purposes in this demo.</li>
-              </ul>
-            </aside>
-          </section>
-
-          <section data-background-image="images/blackboard.jpg">
-            <h1>GPIO Digital Input with Interrupt</h1>
-            <aside class="notes">
-              <ul>
-                <li>We'll talk about interrupts on digital input signals later.</li>
-              </ul>
-            </aside>
-          </section>
-
+        <section data-background-image="images/blackboard.jpg">
+          <h1>Vector Table</h1>
+          <aside class="notes">
+            <ul>
+              <li>Exceptions and Interrupts - TM4C123GH6PM Microcontroller Data Sheet, Page 102</li>
+              <li>Vector Table - TM4C123GH6PM Microcontroller Data Sheet, Page 106</li>
+              <li>Highlight Stack Pointer, Reset Vector, SysTick Vector, and GPIOA Vector - TM4C123GH6PM Microcontroller Data Sheet, Page 103</li>
+              <li>Review code</li>
+            </ul>
+          </aside>
         </section>
 
         <!--
           Stack.
         -->
         <section data-background-image="images/blackboard.jpg">
-          <h2>Stack</h2>
+          <h1>Stack</h1>
           <img src="../figures/stack_traditional.png" width="300"/>
           <img src="../figures/stack_safer.png" width="300"/>
           <aside class="notes">
@@ -119,85 +107,67 @@
         </section>
 
         <!--
+          General Configuration
+        -->
+        <section>
+          <section data-background-image="images/blackboard.jpg">
+            <h1>Configuration</h1>
+            <h3>Run Mode Clock Gating Control</h3>
+            <h3>Nested Vector Interrupt Controller</h3>
+            <h3>SysTick</h3>
+            <aside class="notes">
+              <ul>
+                <li>Describe RCGC - TM4C123GH6PM Microcontroller Data Sheet, page 340</li>
+                <li>Review code</li>
+                <li>Describe NVIC EN/PRI - TM4C123GH6PM Microcontroller Data Sheet, page 141,152</li>
+                <li>Review code</li>
+                <li>SysTick - TM4C123GH6PM Microcontroller Data Sheet, page 138</li>
+                <li>Review code</li>
+              </ul>
+          </section>
+        </section>
+
+        <!--
           Interrupts on GPIO digital inputs.
 
           TODO: Describe interrupt configuration.
         -->
-        <section data-background-image="images/blackboard.jpg">
+        <section>
           <section data-background-image="images/blackboard.jpg">
             <h1>GPIO Digital Input with Interrupt</h1>
             <aside class="notes">
               <ul>
-                <li></li>
+                <li>GPIO control register map, TM4C123GH6PM Microcontroller Data Sheet, p660</li>
+                <li>GPIODEN/GPIODIR control registers.</li>
+                <li>GPIOIM interrupt mask</li>
+                <li>GPIOIBE interrupt both edges.</li>
               </ul>
             </aside>
           </section>
 
           <section data-background-image="images/blackboard.jpg">
-            <h3>Pull Down Resistor</h3>
+            <h2>Pull Down Resistor</h2>
             <img src="../figures/pdr.png" width="600"/>
             <aside class="notes">
               <ul>
-                <li>TODO: Data sheet</li>
+                <li>GPIOPDR control register. Keep input in known state.</li>
               </ul>
             </aside>
           </section>
 
           <section data-background-image="images/blackboard.jpg">
-            <h3>Wall Switch</h3>
+            <h2>Wall Switch</h2>
             <img src="../figures/switch.png" width="800"/>
-          </section>
-        </section>
-
-        <!--
-          GPIO digital output.
-        -->
-        <section>
-          <section data-background-image="images/blackboard.jpg">
-            <h1>GPIO Digital Output</h1>
             <aside class="notes">
               <ul>
-                <li>It's all the same. logic HIGH or logic LOW on whatever pin you choose. It only matters what the pin is connected to.</li>
+                <li>Problem is, the switch bounces.</li>
               </ul>
             </aside>
           </section>
 
-          <section data-background-image="images/blackboard.jpg">
-            <h2>Solid State Relay</h2>
-            <img src="../figures/ssr.png" width="500"/>
-            <aside class="notes">
-              <ul>
-                <li>Solid state relay from JameCo - 40 Amps, 240 Volts. Control signal 3-32 Volts, 15mA.</li>
-              </ul>
-            </aside>
-          </section>
-
-          <section data-background-image="images/blackboard.jpg">
-            <h2>Larson Scanner</h2>
-            <img src="../figures/bus.png" width="600"/>
-            <aside class="notes">
-              <ul>
-                <li>Bitwise shift a 10-bit number on a schedule. After each shift, display bits 2:9.</li>
-              </ul>
-            </aside>
-          </section>
-        </section>
-
-        <!--
-          Switch debouncing.
-        -->
-        <section data-background-image="images/blackboard.jpg">
-          <section data-background-image="images/blackboard.jpg">
-            <h1>Switch Debouncing</h1>
-            <!--
-            <aside class="notes">
-              <ul>
-                <li></li>
-              </ul>
-            </aside>
-            -->
-          </section>
-
+          <!--
+            Switch debouncing.
+          -->
           <section data-background-image="images/blackboard.jpg">
             <h3>Dramatization of switch bouncing versus CPU clock.</h3>
             <img src="../figures/bounce.png" width="600"/>
@@ -222,14 +192,51 @@
             <aside class="notes">
               <ul>
                 <li>Quickly review the code.</li>
-                <li>Disable GPIOA interrupts. Set the flag. Wait for two cycles of logic HIGH.</li>
-                <li>Then we conclude that the switch is on. Re-enable GPIOA interrupts.</li>
+                <li>Explain debouncing algorithm: GPIOA interrupt handler. Disable GPIOA interrupts. Set pa3flag. Wait for two cycles of logic HIGH.</li>
+                <li>Then we conclude that the switch is on. Re-enable GPIOA interrupts, set pa3flag=0.</li>
               </ul>
             </aside>
           </section>
         </section>
 
-        <!-- TODO: SysTick slides -->
+        <!--
+          GPIO digital output.
+
+          TODO: Perhaps this should come after switch debouncing.
+        -->
+        <section>
+          <section data-background-image="images/blackboard.jpg">
+            <h1>GPIO Digital Output</h1>
+            <aside class="notes">
+              <ul>
+                <li>GPIODEN/GPIODIR must be configured.</li>
+                <li>Configured as outputs, GPIO pins do not require interrupt configuration.</li>
+              </ul>
+            </aside>
+          </section>
+
+          <section data-background-image="images/blackboard.jpg">
+            <h2>Solid State Relay</h2>
+            <img src="../figures/ssr.png" width="500"/>
+            <aside class="notes">
+              <ul>
+                <li>Solid state relay from JameCo - 40 Amps, 240 Volts. Control signal 3-32 Volts, 15mA.</li>
+                <li>Each GPIO pin is bitwise addressable. Or, all bits may be written at once.</li>
+                <li>Explain read-modify-write problem with race condition</li>
+              </ul>
+            </aside>
+          </section>
+
+          <section data-background-image="images/blackboard.jpg">
+            <h2>Larson Scanner</h2>
+            <img src="../figures/bus.png" width="600"/>
+            <aside class="notes">
+              <ul>
+                <li>Bitwise shift a 10-bit number on a schedule. After each shift, display bits 2:9.</li>
+              </ul>
+            </aside>
+          </section>
+        </section>
 
         <section data-background-image="images/blackboard.jpg">
           <h1>Questions</h1>
