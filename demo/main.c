@@ -17,7 +17,7 @@ int main(void){
 
 	// Loop forever.
 	while (1) {
-		/* AAPCS Demo */
+		/* AAPCS Demo: Load conspicuous values into registers. */
 		__asm volatile (
 				"    mov r0,#0x11111111\n\t"
 				"    mov r1,#0x22222222\n\t"
