@@ -18,12 +18,12 @@ __attribute__((naked)) void assert_failed(char const *file, int line) {
 }
 
 void GPIOPortA_IRQHandler(void) {
-	GPIOA_AHB->ICR |= PA3;				// Clear PA3 interrupt
+	GPIOA_AHB->ICR |= PA3;				// Clear PA3 interrupt.
 
 	/* Debounce switch on PA3 */
 	GPIO_PA3_Interrupt_Disable();		// Switch will bounce. Disable interrupt.
 
-	pa3flag = 1;
+	pa3flag = 1;						// Indicate need to poll for PA3 logic level.
 }
 
 void SysTick_Handler(void) {
