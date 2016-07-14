@@ -19,7 +19,7 @@ To make the figures::
     cd figures
     make
 
-To view the slides, just open `index.html` in your browser::
+To view the slides, just open ``index.html`` in your browser::
 
     cd slides
     firefox index.html
