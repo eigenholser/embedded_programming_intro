@@ -38,19 +38,7 @@
           <aside class="notes">
             <ul>
               <li>Java/Scala dev at t0, blockchain securities. </li>
-              <li>Follow along if you like. Github link at end of talk too.</li>
-            </ul>
-          </aside>
-        </section>
-
-        <section data-background-image="images/blackboard.jpg">
-          <h1>Vector Table</h1>
-          <h1>Stack</h1>
-          <h1>Interrupts</h1>
-          <h1>GPIO</h1>
-          <aside class="notes">
-            <ul>
-              <li>These topics are all interwoven. Though I will try to focus, we will unavoidably bounce around.</li>
+              <li>Joind.in</li>
             </ul>
           </aside>
         </section>
@@ -60,14 +48,24 @@
           <img src="images/tm4c.jpg" height="500"/>
           <aside class="notes">
             <ul>
-              <li>Introduct TM4C, embedded system, peripherals.</li>
-              <li>See the demo here.</li>
-              <li>Don't forget the UART!</li>
+              <li>Introduce TM4C, embedded system, peripherals.</li>
+              <li>Embedded systems boot in milliseconds.</li>
+              <li>Start cu to capture UART!</li>
+              <li>Explain printf statements and optimizataion issues.</li>
+              <li>Do the demo here.</li>
               <li>Introduce TM4C data sheet, user's manual, AAPCS document.</li>
               <li>TI Code Composer Studio, GCC ARM. No limit.</li>
               <li>IAR Systems Embedded Workbench or Keil uVision. Free license for size limited or time limited.</li>
               <li>Code written for GCC, TM4C.</li>
             </ul>
+          </aside>
+        </section>
+
+        <section data-background-image="images/blackboard.jpg">
+          <h1>Vector Table</h1>
+          <h1>Stack</h1>
+          <h1>Interrupts</h1>
+          <h1>GPIO</h1>
           </aside>
         </section>
 
@@ -77,12 +75,16 @@
         -->
         <section data-background-image="images/blackboard.jpg">
           <h1>Vector Table</h1>
+          <img src="../figures/vector.png" width="450"/>
           <aside class="notes">
             <ul>
               <li>Exceptions and Interrupts - TM4C123GH6PM Microcontroller Data Sheet, Page 102</li>
               <li>Vector Table - TM4C123GH6PM Microcontroller Data Sheet, Page 106</li>
               <li>Highlight Stack Pointer, Reset Vector, SysTick Vector, and GPIOA Vector - TM4C123GH6PM Microcontroller Data Sheet, Page 103</li>
-              <li>Review code</li>
+              <li>Review code startup.c/startup.h</li>
+              <li>Vector table is just a constant 154 element integer array flashed to ROM.</li>
+              <li>Every entry in the vector table is a pointer to a function--except the first value, SP</li>
+              <li>See linker script</li>
             </ul>
           </aside>
         </section>
@@ -92,8 +94,8 @@
         -->
         <section data-background-image="images/blackboard.jpg">
           <h1>Stack</h1>
-          <img src="../figures/stack_traditional.png" width="300"/>
-          <img src="../figures/stack_safer.png" width="300"/>
+          <img src="../figures/stack_traditional.png" width="450"/>
+          <img src="../figures/stack_safer.png" width="450"/>
           <aside class="notes">
             <ul>
               <li>Stack Pointer - TM4C123GH6PM Microcontroller Data Sheet, Page 102</li>
@@ -118,9 +120,9 @@
             <aside class="notes">
               <ul>
                 <li>Describe RCGC - TM4C123GH6PM Microcontroller Data Sheet, page 340</li>
-                <li>Review code</li>
+                <li>Review code. Debug UART GPIOA RCGC enable. View memory 0x4000 4000. Breakpoint on RCGC enable.</li>
                 <li>Describe NVIC EN/PRI - TM4C123GH6PM Microcontroller Data Sheet, page 141,152</li>
-                <li>Review code</li>
+                <li>Review code, interrupt.c NVIC_Init()</li>
                 <li>SysTick - TM4C123GH6PM Microcontroller Data Sheet, page 138</li>
                 <li>Review code</li>
               </ul>
@@ -129,8 +131,6 @@
 
         <!--
           Interrupts on GPIO digital inputs.
-
-          TODO: Describe interrupt configuration.
         -->
         <section>
           <section data-background-image="images/blackboard.jpg">
