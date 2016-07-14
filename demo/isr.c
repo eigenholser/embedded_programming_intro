@@ -53,28 +53,28 @@ void SysTick_Handler(void) {
 	if (pa3flag == 1) {
 		counter++;
 		/* Check for PA3 logic level */
-		if ((GPIOA_AHB->GPIO_Bits[PA3] == PA3) & (counter > 1)) {
+		if ((GPIOA_AHB->DATA_BITS[PA3] == PA3) & (counter > 1)) {
 			counter = 0;
 			sw_count++;								// Count the switch
 
 			/* Switch is on. */
-			GPIOA_AHB->GPIO_Bits[PA2] = PA2;		// Turn lamp on, set PA2 HIGH
+			GPIOA_AHB->DATA_BITS[PA2] = PA2;		// Turn lamp on, set PA2 HIGH
 			printf("Lamp ON\n");
 
 			GPIO_PA3_Interrupt_Enable();			// Turn interrupt back on
 
-			GPIOF_AHB->GPIO_Bits[LED_BLUE] = LED_BLUE;	// Indicate lamp on
+			GPIOF_AHB->DATA_BITS[LED_BLUE] = LED_BLUE;	// Indicate lamp on
 		}
 
-		if ((GPIOA_AHB->GPIO_Bits[PA3] == 0) & (counter > 1)){
+		if ((GPIOA_AHB->DATA_BITS[PA3] == 0) & (counter > 1)){
 			/* Switch is off. */
-			GPIOA_AHB->GPIO_Bits[PA2] = 0;			// Turn lamp off, set PA2 LOW
+			GPIOA_AHB->DATA_BITS[PA2] = 0;			// Turn lamp off, set PA2 LOW
 			printf("Lamp OFF\n");
 			counter = 0;
 			sw_count++;								// Count the switch
 			GPIO_PA3_Interrupt_Enable();			// Turn interrupt back on
 
-			GPIOF_AHB->GPIO_Bits[LED_BLUE] = 0;		// Indicate lamp off
+			GPIOF_AHB->DATA_BITS[LED_BLUE] = 0;		// Indicate lamp off
 		}
 	}
 }

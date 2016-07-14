@@ -4,7 +4,7 @@
  * Modifications:
  * Comment "system_TM4CGH6PM.h" include.
  * Edit processor config defines.
- * Change GPIOA struct _I RESERVED0[255] to _IO GPIO_Bits[255]
+ * Change GPIOA struct _I RESERVED0[255] to _IO DATA_BITS[255]
  *
  */
 /****************************************************************************************************//**
@@ -218,7 +218,7 @@ typedef struct {                                    /*!< WATCHDOG0 Structure    
   */
 
 typedef struct {                                    /*!< GPIOA Structure                                                       */
-  __IO uint32_t  GPIO_Bits[255];
+  __IO uint32_t  DATA_BITS[255];
   __IO uint32_t  DATA;                              /*!< GPIO Data                                                             */
   __IO uint32_t  DIR;                               /*!< GPIO Direction                                                        */
   __IO uint32_t  IS;                                /*!< GPIO Interrupt Sense                                                  */
