@@ -1,7 +1,8 @@
 Embedded Programming Introduction
 =================================
 
-Materials for OpenWest 2016 talk on Friday July 15.
+Materials for `OpenWest 2016 <https://www.openwest.org/>`_ talk on Friday
+July 15.
 
 The slides are `reveal.js <https://github.com/hakimel/reveal.js/>`_. They
 may be viewed as intended just by opening the HTML file ``index.html`` in
