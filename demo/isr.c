@@ -31,8 +31,8 @@ void SysTick_Handler(void) {
 	if (systick_counter > larsonFreq) {
 		systick_counter = 0;
 		shiftLEDBits();
-		int larsonWin = (larsonValue & 0x1FEU) >> 1;
-		GPIOB_AHB->DATA = larsonWin;
+		int larsonWin = (larsonValue & LARSON_WINDOW) >> 1;
+		GPIOB_AHB->DATA = larsonWin;	// Write the whole byte.
 
 		larsonFreq = LARSON_FREQ > sw_count ? LARSON_FREQ - sw_count : 1;
 	}

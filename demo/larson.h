@@ -4,6 +4,7 @@
 #define LARSON_FREQ		0x20U
 #define LARSON_MIN_VALUE	0x07U
 #define LARSON_MAX_VALUE	0x380U
+#define LARSON_WINDOW	0x1FEU
 #define RIGHT     1
 #define LEFT      0
 
