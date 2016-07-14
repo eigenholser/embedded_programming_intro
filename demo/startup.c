@@ -3,7 +3,7 @@
 __attribute__ ((section(".intvecs")))
 int const Vectors[] = {
 	/* CPU Exceptions */
-    (int)&__stack_end__,          //Top of Stack
+    (int)&__stack_end__,          // Top of Stack
     (int)&Reset_Handler,          // Reset Handler
     (int)&NMI_Handler,            // NMI Handler
     (int)&HardFault_Handler,      // Hard Fault Handler
