@@ -16,5 +16,13 @@ int main(void){
 	SysTick_Init();			// Initialize SysTick interrupts.
 
 	// Loop forever.
-	while (1) {}
+	while (1) {
+		/* AAPCS Demo */
+		__asm volatile (
+				"    mov r0,#0x11111111\n\t"
+				"    mov r1,#0x22222222\n\t"
+				"    mov r2,#0x33333333\n\t"
+				"    mov r3,#0x44444444\n\t"
+		);
+	}
 }
