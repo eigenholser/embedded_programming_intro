@@ -3,12 +3,12 @@ Embedded Programming Introduction
 
 Materials for OpenWest 2016 talk on Friday July 15.
 
-The slides are `reveal.js`. They may be viewed as intended just by opening
-the HTML file `index.html` in your browser. Several slides depend on PNG
-images in the `./figures` directory.
+The slides are ``reveal.js``. They may be viewed as intended just by opening
+the HTML file ``index.html`` in your browser. Several slides depend on PNG
+images in the ``./figures`` directory.
 
 Illustration for the slides are implemented in TeX using the Tikz package.
-There is a `Makefile` that will build the PNG images needed by the slides.
+There is a ``Makefile`` that will build the PNG images needed by the slides.
 Some LaTeX packages will be required in order to build the figures. On
 Ubuntu 16.04 that starts with TeX Live but requires more than the base.
 AMS Math is required. A comprehensive list is beyond the scope of these
