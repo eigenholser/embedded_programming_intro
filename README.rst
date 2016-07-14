@@ -1,5 +1,5 @@
-Embedded Programming Introduction
-=================================
+Introduction to Embedded Systems Programming
+============================================
 
 Materials for `OpenWest 2016 <https://www.openwest.org/>`_ talk on Friday
 July 15.
