@@ -85,6 +85,7 @@
               <li>Vector table is just a constant 154 element integer array flashed to ROM.</li>
               <li>Every entry in the vector table is a pointer to a function--except the first value, SP</li>
               <li>See linker script</li>
+              <li>Run code in debugger, view memory at 0x0000 0000</li>
             </ul>
           </aside>
         </section>
@@ -120,11 +121,11 @@
             <aside class="notes">
               <ul>
                 <li>Describe RCGC - TM4C123GH6PM Microcontroller Data Sheet, page 340</li>
-                <li>Review code. Debug UART GPIOA RCGC enable. View memory 0x4000 4000. Breakpoint on RCGC enable.</li>
+                <li>Debug UART GPIOA RCGC enable. View memory 0x4000 4000. Breakpoint on RCGC enable.</li>
                 <li>Describe NVIC EN/PRI - TM4C123GH6PM Microcontroller Data Sheet, page 141,152</li>
-                <li>Review code, interrupt.c NVIC_Init()</li>
+                <li>Debug set breakpoint, interrupt.c NVIC_Init()</li>
                 <li>SysTick - TM4C123GH6PM Microcontroller Data Sheet, page 138</li>
-                <li>Review code</li>
+                <li>Debug, set breakpoint, interrupt.c SysTick_Init()</li>
               </ul>
           </section>
         </section>
@@ -191,7 +192,11 @@
             <img src="../figures/count.png"/>
             <aside class="notes">
               <ul>
-                <li>Quickly review the code.</li>
+                <li>Set breakpoint isr.c, SysTick_Handler() inside lamp on section.</li>
+                <li>Memory view for Stack at 0x2000 0400. Confirm Registers pushed on stack. AAPCS.</li>
+                <li>Single-step through code turning lamp/LED on/off.
+                <li>Each GPIO pin is bitwise addressable. Or, all bits may be written at once.</li>
+                <li>Explain read-modify-write problem with race condition</li>
                 <li>Explain debouncing algorithm: GPIOA interrupt handler. Disable GPIOA interrupts. Set pa3flag. Wait for two cycles of logic HIGH.</li>
                 <li>Then we conclude that the switch is on. Re-enable GPIOA interrupts, set pa3flag=0.</li>
               </ul>
@@ -201,8 +206,6 @@
 
         <!--
           GPIO digital output.
-
-          TODO: Perhaps this should come after switch debouncing.
         -->
         <section>
           <section data-background-image="images/blackboard.jpg">
@@ -221,8 +224,8 @@
             <aside class="notes">
               <ul>
                 <li>Solid state relay from JameCo - 40 Amps, 240 Volts. Control signal 3-32 Volts, 15mA.</li>
-                <li>Each GPIO pin is bitwise addressable. Or, all bits may be written at once.</li>
-                <li>Explain read-modify-write problem with race condition</li>
+                <li>Note we are not using bitwise addressing here for GPIO writes.</li>
+                <li>See isr.c line 35 in SysTick_Handler().</li>
               </ul>
             </aside>
           </section>
