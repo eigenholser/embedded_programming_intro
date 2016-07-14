@@ -3,9 +3,10 @@ Embedded Programming Introduction
 
 Materials for OpenWest 2016 talk on Friday July 15.
 
-The slides are ``reveal.js``. They may be viewed as intended just by opening
-the HTML file ``index.html`` in your browser. Several slides depend on PNG
-images in the ``./figures`` directory.
+The slides are `reveal.js <https://github.com/hakimel/reveal.js/>`_. They
+may be viewed as intended just by opening the HTML file ``index.html`` in
+your browser. Several slides depend on PNG images in the ``./figures``
+directory.
 
 Illustration for the slides are implemented in TeX using the Tikz package.
 There is a ``Makefile`` that will build the PNG images needed by the slides.
