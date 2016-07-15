@@ -39,9 +39,9 @@
             <ul>
               <li>Java/Scala dev at t0, blockchain securities. </li>
               <li>The slides are linked at joind.in.</li>
-              <li>Interrupt any time with questions. But because of time constraints, I may defer until after the talk.</li>
-              <li>Audience survey. Experience with embedded systems.</li>
-              <li>Juggling multiple screens. Apologies in advance for the choppiness.</li>
+              <li>Interrupt any time with questions. Because of time constraints, may need to defer until after the talk.</li>
+              <li>Audience survey. Experience with embedded systems, C programming.</li>
+              <li>Juggling six workspaces. Any choppiness is unavoidable.</li>
             </ul>
           </aside>
         </section>
@@ -106,7 +106,8 @@
               <li>Toyota unintended acceleration problem - stack overflow.</li>
               <li>AAPCS - Arm Architecture Procedure Call Standard, See AAPCS document</li>
               <li>HardFault exception handler on stack overflow</li>
-              <li>GCC attribute "naked" to not use stack operations.
+              <li>GCC attribute "naked" to not use stack operations. Avoids endless exception loop and changing state needed for debugging.</li>
+              <li>Review startup.c HardFault()</li>
             </ul>
           </aside>
         </section>
@@ -164,7 +165,7 @@
             <img src="../figures/switch.png" width="800"/>
             <aside class="notes">
               <ul>
-                <li>Problem is, the switch bounces.</li>
+                <li>Problem is...the switch bounces.</li>
               </ul>
             </aside>
           </section>
