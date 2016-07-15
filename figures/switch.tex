@@ -16,6 +16,7 @@
         \node [font=\footnotesize,below] at (output.south) {Digital Input};
         \node (wallswitch) at (7,0) [make contact] {};
         \node [font=\footnotesize,above] at (wallswitch.north) {Wall Switch};
+        \node [font=\footnotesize] at (8.2,-2) {3.3V};
         \draw [-] (0,0) to (output);
         \draw (2,0) to [resistor={ohm=10K},point down] (4,2)
                       to (2,-4.0) node [ground,point down] {} (2,-4.0);
