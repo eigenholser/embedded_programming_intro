@@ -43,7 +43,6 @@ demo/.project
 
 # Figures
 *.pdf
-*.png
 *.aux
 *.log
 *.dvi

@@ -8,7 +8,7 @@ alllist= for x in $(wildcard *.tex); do \
 		 done
 realcleanlist= for x in $(wildcard *.dvi) $(wildcard *.aux) \
 		           $(wildcard *.log) $(wildcard *ps) \
-				   $(wildcard *.pdf) $(wildcard *.png); do \
+				   $(wildcard *.pdf); do \
 				  ${ECHO} $$x; \
 		       done
 cleanlist= for x in $(wildcard *.dvi) $(wildcard *.aux) \
