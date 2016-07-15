@@ -33,8 +33,8 @@ void GPIO_PA3_Interrupt_Disable(void) {
 
 void NVIC_Init() {
 	/* NVIC configuration */
-	NVIC_PRI0_R = 0;				// Priority 0, highest, p 152.
-	NVIC_EN0_R = 1U;				// Enable IRQ0 - GPIOA, p 141.
+	NVIC_PRI0_R = (7U << 5);		// Priority 7, lowest, p 152.
+	NVIC_EN0_R = 1U;				// Enable IRQ0 - GPIOA, p 142.
 }
 
 void SysTick_Init() {
