@@ -200,7 +200,7 @@
             <img src="../figures/count.png"/>
             <aside class="notes">
               <ul>
-                <li>Explain debouncing algorithm: GPIOA interrupt handler. Disable GPIOA interrupts. Set pa3flag. Wait for two cycles of logic HIGH.</li>
+                <li>Explain debouncing algorithm: GPIOA interrupt handler. Disable GPIOA interrupts. Set pa3flag. After two SysTick cycles check for logic HIGH.</li>
                 <li>Then we conclude that the switch is on. Re-enable GPIOA interrupts, set pa3flag=0.</li>
                 <li>Set breakpoint isr.c, SysTick_Handler() inside lamp on section. Flip the switch on.</li>
                 <li>AAPCS - Arm Architecture Procedure Call Standard, See AAPCS document</li>
