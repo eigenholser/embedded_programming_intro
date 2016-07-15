@@ -23,6 +23,7 @@ int main(void){
 				"    mov r1,#0x22222222\n\t"
 				"    mov r2,#0x33333333\n\t"
 				"    mov r3,#0x44444444\n\t"
+				"    mov r12,#0x55555555\n\t"
 		);
 	}
 }
