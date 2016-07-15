@@ -233,8 +233,6 @@
             <aside class="notes">
               <ul>
                 <li>Solid state relay from JameCo - 40 Amps, 240 Volts. Control signal 3-32 Volts, 15mA.</li>
-                <li>Note we are not using bitwise addressing here for GPIO writes.</li>
-                <li>See isr.c line 35 in SysTick_Handler().</li>
               </ul>
             </aside>
           </section>
@@ -245,6 +243,8 @@
             <aside class="notes">
               <ul>
                 <li>Bitwise shift a 10-bit number on a schedule. After each shift, display bits 2:9.</li>
+                <li>See isr.c line 35 in SysTick_Handler().</li>
+                <li>Note we are not using bitwise addressing here for GPIO writes.</li>
               </ul>
             </aside>
           </section>
