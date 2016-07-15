@@ -1,5 +1,5 @@
 /*
-
+ * Modified from default. Primary change moved stack to bottom of RAM.
  */
 /******************************************************************************
  *
