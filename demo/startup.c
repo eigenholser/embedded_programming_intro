@@ -179,7 +179,7 @@ void Reset_Handler(void) {
         *dst = *src;
     }
 
-    // Zero-fill the .bss segment in RAM
+    /* Zero-fill the .bss segment in RAM */
     for (dst = &__bss_start__; dst < &__bss_end__; ++dst) {
         *dst = 0;
     }
