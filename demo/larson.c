@@ -8,6 +8,7 @@ int larsonFlag = 0;
 int larsonFreq = LARSON_FREQ;
 
 void Larson_Init(void) {
+	printf("%s\n", ">> Larson scanner on GPIOB");
 	SYSCTL->RCGCGPIO |= (1U << 1);	// Enable run mode for GPIOB
 	SYSCTL->GPIOHBCTL |= (1U << 1); // Enable AHB for GPIOB
 	GPIOB_AHB->DIR |= 0xFFU;		// All GPIOB pins output

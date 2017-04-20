@@ -8,12 +8,15 @@
 
 int main(void){
 	UART_Init();	// Initialize UART before outputting...
-	printf("%s\n", "Initializing...");
+
+	printf("%s\n", "***Initializing");
 
 	LED_Init();				// Initialize LEDs on GPIOF
 	Larson_Init();			// Initialize Larson scanner on GPIOB.
 	GPIOA_Pin_Init();		// Initialize GPIOA Pins and interrupts.
 	SysTick_Init();			// Initialize SysTick interrupts.
+
+	printf("%s\n", "Initialization complete!");
 
 	// Loop forever.
 	while (1) {

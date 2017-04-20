@@ -7,6 +7,7 @@
 int pa3flag = 0;
 
 void GPIOA_Pin_Init(void) {
+	printf("%s\n", ">> GPIOA pin setup");
 	SYSCTL->GPIOHBCTL |= (1U); 	  	// Enable AHB for GPIOA
 
 	/* GPIOA pin configuration */
@@ -33,12 +34,14 @@ void GPIO_PA3_Interrupt_Disable(void) {
 
 void NVIC_Init() {
 	/* NVIC configuration */
+	printf("%s\n", ">> Nested Vector Interrupt Controller");
 	NVIC_PRI0_R = (7U << 5);		// Priority 7, lowest, p 152.
 	NVIC_EN0_R = 1U;				// Enable IRQ0 - GPIOA, p 142.
 }
 
 void SysTick_Init() {
 	/* Configure SysTick to interrupt after short delay */
+	printf("%s\n", ">> SysTick");
 	SysTick->LOAD = SYS_CLOCK_HZ/200U - 1U;			// STRELOAD, p 140.
 	SysTick->VAL  = 0U;								// STCURRENT - write-clear. Also clears `count' bit of STCTRL, p 141.
 	SysTick->CTRL = (1U << 2) | (1U << 1) | 1U;		// STCTRL, p 138.
