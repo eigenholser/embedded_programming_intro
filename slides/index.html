@@ -66,10 +66,10 @@
             <aside class="notes">
               <ul>
                 <li>Introduce TM4C.</li>
-                <li>Demo with USB cable connnected to laptop with terminal and cu connected.</li>
-                <li>Start cu to capture UART!</li>
-                <li>Explain printf statements and optimizataion issues.</li>
                 <li>Demo with USB cable connected to power adapter only.</li>
+                <li>Demo with USB cable connnected to laptop with terminal and cu connected.</li>
+                <li>Start cu to capture UART! After USB attached.</li>
+                <li>Explain printf statements and optimizataion issues.</li>
                 <li>Introduce TM4C data sheet, user's manual, AAPCS document.</li>
                 <li>TI Code Composer Studio, GCC ARM. No limit.</li>
               </ul>
@@ -101,7 +101,7 @@
               <li>Highlight Stack Pointer, Reset Vector, SysTick Vector, and GPIOA Vector - TM4C123GH6PM Microcontroller Data Sheet, Page 103</li>
               <li>Review code startup.c/startup.h, and isr.c</li>
               <li>See linker script</li>
-              <li>Run code in debugger, view memory at 0x0000 0000</li>
+              <li>Show and tell vector table. Debug project. Memory view 0x0000 0000. See SP at 0x0. Disassembly view at 0x0000 0000. Note vectors to handlers.</li>
               <li>Verify that fixture non-functional when debugger stopped.</li>
             </ul>
           </aside>
@@ -117,10 +117,10 @@
           <aside class="notes">
             <ul>
               <li>Stack Pointer - TM4C123GH6PM Microcontroller Data Sheet, Page 107</li>
-              <li>Note two approaches to stack location in RAM.</li>
+              <li>Note two approaches to stack location in RAM. Traditional is left. Safer is right.</li>
               <li>Linker and stack location - linker.lds</li>
-              <li>Toyota Camry unintended acceleration problem - stack overflow.</li>
-              <li>HardFault exception handler on stack overflow</li>
+              <li>Toyota Camry unintended acceleration problem - stack overflow. Overwrote heap memory.</li>
+              <li>With this arrangement, the CPU throws HardFault exception on stack overflow with ROM write attempt.</li>
               <li>GCC attribute "naked" to not use stack operations. Avoids endless exception loop and changing state needed for debugging.</li>
               <li>Review startup.c HardFault()</li>
             </ul>
@@ -139,12 +139,13 @@
             <aside class="notes">
               <ul>
                 <li>Describe RCGC - TM4C123GH6PM Microcontroller Data Sheet, page 340</li>
-                <li>Debug UART GPIOA RCGC enable. View memory 0x4000 4000. Breakpoint on RCGC enable.</li>
-                <li>Describe NVIC EN/PRI - TM4C123GH6PM Microcontroller Data Sheet, page 142,152.</li>
+                <li>Control registers and GPIO are all memory mapped.</li>
+                <li>Debug UART GPIOA RCGC enable. See register view UART0 and memory 0x4000 4000. Breakpoint on RCGC enable.</li>
+                <li>Describe NVIC EN/PRI - TM4C123GH6PM Microcontroller Data Sheet, page 142, 152.</li>
                 <li>GPIO A corresponds to interrupt 0.</li>
-                <li>Debug set breakpoint, interrupt.c NVIC_Init(). See memory view 0xE000 E400 32-bit binary. Step to set priority and enable.</li>
+                <li>Debug set breakpoint, interrupt.c NVIC_Init(). See register view NVIC and memory view 0xE000 E400 32-bit binary. Step to set priority and enable.</li>
                 <li>SysTick - TM4C123GH6PM Microcontroller Data Sheet, page 138</li>
-                <li>Debug, set breakpoint, interrupt.c SysTick_Init(). See memory view 0xE000 E010 32-bit binary. Step 3 times to configure SysTick.</li>
+                <li>Debug, set breakpoint, interrupt.c SysTick_Init(). See register view NVIC and memory view 0xE000 E010 32-bit binary. Step 3 times to configure SysTick.</li>
               </ul>
           </section>
         </section>
@@ -161,6 +162,7 @@
                 <li>GPIODEN/GPIODIR control registers.</li>
                 <li>GPIOIM interrupt mask</li>
                 <li>GPIOIBE interrupt both edges.</li>
+                <li>Register view GPIO_PORTA_AHB. Memory view 0x4005 8000. Binary number format.</li>
                 <li>Set breakpoint in GPIOA_Pin_Init(). Step through register configuration. Note input/output configuration.</li>
               </ul>
             </aside>
@@ -171,7 +173,7 @@
             <img src="../figures/pdr.png" width="600"/>
             <aside class="notes">
               <ul>
-                <li>GPIOPDR control register. Keep input in known state.</li>
+                <li>GPIOPDR control register. Keep switch input in known state.</li>
               </ul>
             </aside>
           </section>
